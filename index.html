@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <title>翔宇診所 | 雙主治專業醫療團隊</title>
     <style>
         /* Global Reset & Page Base */
@@ -72,6 +73,62 @@
 
         .header-nav a:hover {
             color: #E2CDA6;
+        }
+
+        /* Header 品牌區域組合 */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        /* SVG Logo 容器樣式 */
+        .header-logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 50%;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .header-brand:hover .header-logo-icon {
+            transform: scale(1.05);
+        }
+
+        /* 圖片檔 Logo 樣式 (如有使用 img 時) */
+        .header-logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* 文字區域調整 */
+        .header-logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .header-logo-text span {
+            font-size: 0.75rem;
+            display: block;
+            color: #E2CDA6;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            margin-top: 3px;
+        }
+
+        /* 手機版 RWD 調整 */
+        @media (max-width: 768px) {
+            .header-brand {
+                justify-content: center;
+            }
         }
 
         /* Hero Banner */
@@ -673,10 +730,16 @@
 
 <body>
     <header>
-        <div class="header-logo">
-            <h1>翔宇診所</h1>
-            <span>XIANG-YU CLINIC</span>
+        <div class="header-brand">
+            <!-- 選項 B：若您已有圖片檔，請解除下方註解並使用這行 -->
+            <img src="logo.png" alt="翔宇診所 Logo" class="header-logo-img">
+
+            <div class="header-logo-text">
+                <h1>翔宇診所</h1>
+                <span>XIANG-YU CLINIC</span>
+            </div>
         </div>
+
         <nav class="header-nav">
             <a href="#bulletin">最新消息</a>
             <a href="#about">創院理念</a>
