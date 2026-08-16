@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翔宇診所 | 雙主治專業醫療團隊</title>
+    <style>
+        /* Global Reset & Page Base */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', 'Noto Serif TC', serif, sans-serif;
+            background-color: #FAF6F0;
+            /* 保持溫暖底色 */
+            color: #111111;
+            /* 修改：加深整體文字顏色為極深灰/黑，提升易讀性 */
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Header & Navigation */
+        header {
+            background-color: #2C3E35;
+            color: #FAF6F0;
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #C5A059;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            /* 修改：增加對比 */
+            margin: 0;
+        }
+
+        .header-logo span {
+            font-size: 0.8rem;
+            display: block;
+            color: #E2CDA6;
+            /* 修改：提亮副標題顏色 */
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .header-nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: #E2CDA6;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background-color: #344E41;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 3.5rem 2rem 3rem 2rem;
+            border-bottom: 1px solid #E5DDCB;
+        }
+
+        .hero-subtitle {
+            color: #F8D8A8;
+            /* 修改：提亮顏色讓深綠底色上更清晰 */
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #F0F0F0;
+            /* 修改：提高對比度 */
+            max-width: 680px;
+            margin: 0 auto 1.8rem auto;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #C5A059;
+            color: #1A1A1A;
+            /* 改為深黑字，增加按鈕內文辨識度 */
+            padding: 0.8rem 2.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px dashed #D4C6B3;
+            /* 加深分隔線 */
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            color: #1F2B25;
+            /* 更深的綠黑色 */
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #C5A059;
+        }
+
+        .section-desc {
+            color: #333333;
+            /* 修改：從灰褐改為深灰 */
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 0.8rem;
+        }
+
+        /* Accordion Announcement Board */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .accordion-item {
+            background-color: #FFFFFF;
+            border: 1px solid #D4C6B3;
+            border-left: 5px solid #2C3E35;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+            transition: border-color 0.3s ease;
+        }
+
+        .accordion-item.important {
+            border-left-color: #C5A059;
+        }
+
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background-color: #FFFFFF;
+            transition: background-color 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #F8F4EC;
+        }
+
+        .accordion-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .bulletin-badge {
+            background-color: #2C3E35;
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .bulletin-badge.gold {
+            background-color: #C5A059;
+            color: #111111;
+            font-weight: 700;
+        }
+
+        .bulletin-date {
+            color: #555555;
+            /* 修改：加深日期顏色 */
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .accordion-title {
+            font-size: 1.1rem;
+            color: #111111;
+            /* 修改：加深標題 */
+            font-weight: 700;
+            margin-left: 0.4rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: #C5A059;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), padding 0.35s ease;
+            background-color: #FAF7F2;
+            border-top: 1px solid transparent;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid #E5DDCB;
+            transition: max-height 0.5s ease-in-out, padding 0.3s ease;
+        }
+
+        .bulletin-inner {
+            color: #222222;
+            /* 修改：純黑深灰，閱讀不吃力 */
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .bulletin-list {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+            color: #222222;
+        }
+
+        .bulletin-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Concept / About Card */
+        .about-card {
+            background-color: #F3ECE1;
+            border: 1px solid #D4C6B3;
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .about-card p {
+            color: #111111;
+            /* 修改：加深 */
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .about-highlights {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+            border-top: 2px solid #D4C6B3;
+            padding-top: 1.5rem;
+        }
+
+        .about-item {
+            text-align: center;
+            padding: 0 0.8rem;
+        }
+
+        .about-item-title {
+            color: #1F2B25;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .about-item-desc {
+            color: #333333;
+            /* 修改：加深 */
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Doctor Profile Section */
+        .doctor-box {
+            background-color: #FFFFFF;
+            border: 1px solid #D4C6B3;
+            border-radius: 8px;
+            padding: 2.2rem;
+            display: flex;
+            gap: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            /* 多個醫師區塊的間距 */
+        }
+
+        .doctor-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .doctor-photo-cell {
+            width: 240px;
+            flex-shrink: 0;
+        }
+
+        .doctor-avatar-container {
+            width: 100%;
+            border: 1px solid #C5A059;
+            /* 提亮邊框 */
+            border-radius: 6px;
+            padding: 6px;
+            background-color: #FAF6F0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .doctor-avatar-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .doctor-avatar-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #333333;
+            margin-top: 0.6rem;
+            font-weight: 700;
+        }
+
+        .doctor-info-cell {
+            flex: 1;
+        }
+
+        .doctor-name-row {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .doctor-name {
+            font-size: 1.6rem;
+            color: #111111;
+            /* 加深 */
+            font-weight: 800;
+        }
+
+        .doctor-badge {
+            background-color: #2C3E35;
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .doctor-quote {
+            font-style: italic;
+            color: #1F2B25;
+            /* 深綠色，增加可讀性 */
+            border-left: 4px solid #C5A059;
+            padding-left: 1rem;
+            margin: 1rem 0 1.2rem 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .doctor-intro {
+            font-size: 1rem;
+            color: #222222;
+            /* 極深灰 */
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .exp-title {
+            font-size: 1.05rem;
+            color: #111111;
+            /* 純黑 */
+            font-weight: 800;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #E5DDCB;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .exp-list li {
+            font-size: 0.95rem;
+            color: #222222;
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 1.2rem;
+            font-weight: 500;
+        }
+
+        .exp-list li::before {
+            content: "■";
+            color: #C5A059;
+            font-size: 0.7rem;
+            position: absolute;
+            left: 0;
+            top: 0.4rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D4C6B3;
+            border-top: 4px solid #2C3E35;
+            border-radius: 6px;
+            padding: 1.8rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .service-card-title {
+            font-size: 1.15rem;
+            color: #111111;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card-desc {
+            font-size: 0.95rem;
+            color: #333333;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* Schedule & Contact Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .info-cell-right {
+            background-color: #F3ECE1;
+            border: 1px solid #D4C6B3;
+            border-radius: 8px;
+            padding: 1.8rem;
+        }
+
+        .table-schedule {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFFFFF;
+            border: 1px solid #D4C6B3;
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .table-schedule th,
+        .table-schedule td {
+            border: 1px solid #D4C6B3;
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+        }
+
+        .table-schedule th {
+            background-color: #2C3E35;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .table-schedule tr:nth-child(even) {
+            background-color: #FAF6F0;
+        }
+
+        .table-schedule td strong {
+            color: #111111;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            color: #111111;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            border-bottom: 3px solid #C5A059;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #222222;
+            font-weight: 500;
+        }
+
+        .contact-label {
+            font-weight: 800;
+            color: #1F2B25;
+        }
+
+        .booking-btn {
+            display: block;
+            text-align: center;
+            background-color: #2C3E35;
+            color: #FFFFFF;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 800;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border: 1px solid #C5A059;
+            transition: background-color 0.3s;
+        }
+
+        .booking-btn:hover {
+            background-color: #1F2B25;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1F2B25;
+            color: #CCCCCC;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 3rem;
+            border-top: 4px solid #C5A059;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .copyright {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .doctor-box {
+                flex-direction: column;
+            }
+
+            .doctor-photo-cell {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-logo">
+            <h1>翔宇診所</h1>
+            <span>XIANG-YU CLINIC</span>
+        </div>
+        <nav class="header-nav">
+            <a href="#bulletin">最新消息</a>
+            <a href="#about">創院理念</a>
+            <a href="#doctor">雙主治團隊</a>
+            <a href="#services">醫療項目</a>
+            <a href="#schedule">門診時間</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-subtitle">胸腔外科 × 急診外科 · 雙主治陣容</div>
+        <h2>自由呼吸，安心守護</h2>
+        <p>將醫學中心等級的胸腔精準醫療與急診外科處置，帶到鄉親的身邊。<br>專業醫護團隊，守護您與家人的健康防線。</p>
+        <a href="#schedule" class="hero-btn">線上預約 / 門診諮詢</a>
+    </section>
+
+    <div class="container">
+
+        <!-- Bulletin / Accordion Section -->
+        <section id="bulletin" class="section">
+            <div class="section-header">
+                <h3 class="section-title">最新消息與公告</h3>
+                <div class="section-desc">診所即時動態與健康衛教資訊（點擊即可展開閱讀）</div>
+            </div>
+
+            <div class="accordion-container">
+                <!-- 公告 1 -->
+                <div class="accordion-item important active">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-header-left">
+                            <span class="bulletin-badge gold">試營運公告</span>
+                            <span class="bulletin-date">2026/08/16</span>
+                            <span class="accordion-title">【院宣】翔宇診所將於 9 月 1 日起正式試營運！</span>
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="bulletin-inner">
+                            各位鄉親朋友好！經過團隊精心的籌備與設備調校，翔宇診所即將於 <strong>2026 年 9 月 1 日（二）</strong> 起展開試營運！
+                            <br><br>
+                            在試營運期間，我們將由 <strong>黃曉翔 院長</strong> 與 <strong>蘇承翔 副院長</strong>
+                            雙主治醫師，率領精銳醫護團隊，為在地鄉親提供最專業、親切的醫療照護。
+                            <ul class="bulletin-list">
+                                <li><strong>試營運期間：</strong> 9 月 1 日起，門診時間全面開放預約與現場掛號。</li>
+                                <li><strong>優惠回饋：</strong> 試營運期間來診衛教與諮詢免收掛號費用，歡迎多加利用。</li>
+                                <li><strong>雙主治優勢：</strong> 結合胸腔外科與急診外科專長，提供全方位的健康評估。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 公告 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-header-left">
+                            <span class="bulletin-badge">衛教宣導</span>
+                            <span class="bulletin-date">2026/08/10</span>
+                            <span class="accordion-title">【健康衛教】久咳不癒超過三週？切勿輕忽胸腔警訊！</span>
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="bulletin-inner">
+                            許多鄉親常以為咳嗽只是感冒未痊癒，但若咳嗽持續超過 3 週，可能與氣喘、胃食道逆流、慢性阻塞性肺病（COPD）或肺部結節有關。
+                            <br><br>
+                            黃曉翔院長提醒：早期的胸腔診查與肺功能檢測能有效釐清病因。本院配備高階肺功能檢測設備，歡迎有長期咳嗽或胸悶困擾的鄉親前來諮詢評估。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h3 class="section-title">創院理念</h3>
+                <div class="section-desc">在地深耕 · 專業零距離</div>
+            </div>
+            <div class="about-card">
+                <p>
+                    翔宇診所由具備專業執照的醫事人員組成精銳團隊，並全面升級為「雙主治醫師」陣容。我們深知鄉親前往大型醫院舟車勞頓的艱辛，因此我們將醫學中心等級的診療經驗與急重症照護品質帶入社區，提供溫暖、細緻且即時的在地醫療。
+                </p>
+                <div class="about-highlights">
+                    <div class="about-item">
+                        <div class="about-item-title">雙專科主治</div>
+                        <div class="about-item-desc">胸腔外科與急診外科雙重把關</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-item-title">醫學中心品質</div>
+                        <div class="about-item-desc">嚴謹的臨床標準與處置流程</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-item-title">免奔波就醫</div>
+                        <div class="about-item-desc">在地享有完整專科追蹤</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctor Section (Dual Attending) -->
+        <section id="doctor" class="section">
+            <div class="section-header">
+                <h3 class="section-title">雙主治醫師團隊介紹</h3>
+                <div class="section-desc">嚴謹專業 · 溫暖關懷，為您的健康雙重把關</div>
+            </div>
+
+            <!-- Doctor 1: 黃曉翔 -->
+            <div class="doctor-box">
+                <div class="doctor-photo-cell">
+                    <div class="doctor-avatar-container">
+                        <!-- 使用預設醫師形象照 -->
+                        <img src="image.png"
+                            alt="黃曉翔 院長專業形象照">
+                        <div class="doctor-avatar-caption">院長 黃曉翔 醫師</div>
+                    </div>
+                </div>
+                <div class="doctor-info-cell">
+                    <div class="doctor-name-row">
+                        <span class="doctor-name">黃曉翔 醫師</span>
+                        <span class="doctor-badge">院長 / 胸腔外科主治醫師</span>
+                    </div>
+                    <div class="doctor-quote">
+                        「胸腔是生命的呼吸之源。醫療不該有距離，精準照護應深耕在地。」
+                    </div>
+                    <p class="doctor-intro">
+                        黃曉翔院長畢業於台北醫學院，曾於洛聖都醫護局（LSMD）擔任胸腔外科專科醫師及醫療督導。累積多年面對高壓緊急處置與複雜胸腔疾病的臨床經驗後，黃院長選擇將這份極致的醫療品質帶回在地，帶領專業護理與呼吸照護團隊，為地方鄉親提供最可靠的健康防線。
+                    </p>
+
+                    <div class="exp-title">專業經歷</div>
+                    <ul class="exp-list">
+                        <li>台北醫學院 醫學系畢業</li>
+                        <li>洛聖都醫護局（LSMD）胸腔外科專科醫師</li>
+                        <li>洛聖都醫護局（LSMD）醫療督導</li>
+                    </ul>
+
+                    <div class="exp-title">主治專長</div>
+                    <p style="font-size: 0.95rem; color: #333; font-weight: 500;">
+                        慢性咳嗽與胸痛早期鑑別診斷、氣喘與 COPD 慢性病管理、胸腔微創小處置與術後復健追蹤、呼吸道急處置諮詢、肺功能檢查與衛教。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Doctor 2: 蘇承翔 (New) -->
+            <div class="doctor-box">
+                <div class="doctor-photo-cell">
+                    <div class="doctor-avatar-container">
+                        <!-- 使用另一張預設醫師形象照 -->
+                        <img src="image2.png"
+                            alt="蘇承翔 副院長專業形象照">
+                        <div class="doctor-avatar-caption">副院長 蘇承翔 醫師</div>
+                    </div>
+                </div>
+                <div class="doctor-info-cell">
+                    <div class="doctor-name-row">
+                        <span class="doctor-name">蘇承翔 醫師</span>
+                        <span class="doctor-badge">副院長 / 急診外科主治醫師</span>
+                    </div>
+                    <div class="doctor-quote">
+                        「急重症前線分秒必爭，以精準與果決為鄉親守護生命的最後防線。」
+                    </div>
+                    <p class="doctor-intro">
+                        蘇承翔副院長畢業於國立臺灣大學醫學院，具備深厚的醫學底蘊。曾任臺大醫院急診醫師，並跨海至洛聖都圓帽山醫院接任代理院長一職。蘇副院長專精於急診外科，擁有豐富的重大外傷處置與急重症搶救經驗。此次加入翔宇團隊，將為在地鄉親提供最即時、專業的外科處置與急症評估。
+                    </p>
+
+                    <div class="exp-title">專業經歷</div>
+                    <ul class="exp-list">
+                        <li>國立臺灣大學醫學院 畢業</li>
+                        <li>臺大醫院 急診醫師</li>
+                        <li>洛聖都圓帽山醫院 代理院長</li>
+                    </ul>
+
+                    <div class="exp-title">主治專長</div>
+                    <p style="font-size: 0.95rem; color: #333; font-weight: 500;">
+                        急診外科、急重症精準處置、外傷處理與傷口縫合、急救復甦、緊急醫療諮詢。
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="section-header">
+                <h3 class="section-title">醫療服務項目</h3>
+                <div class="section-desc">胸腔內外照護與急診外科的全面守護</div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card-title">慢性咳嗽與胸痛特別門診</div>
+                    <div class="service-card-desc">
+                        針對長期咳嗽、胸悶、呼吸不順或胸部不適進行精準的早期鑑別與診斷，及早發現病因並給予個人化治療方案。
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-title">急診外科與外傷處置</div>
+                    <div class="service-card-desc">
+                        由急診外科專科醫師親自評估，提供專業的急症初步診斷、外傷傷口縫合、換藥與術後專業照護。
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-title">氣喘與肺阻塞 (COPD) 照護</div>
+                    <div class="service-card-desc">
+                        提供個人化吸入劑用藥衛教、生活環境調整指導與定期肺功能追蹤，協助鄉親穩定控制慢性呼吸道疾病。
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-title">微創處置與術後追蹤</div>
+                    <div class="service-card-desc">
+                        提供門診微創小處置、術後傷口定期照護與拆線衛教，免去長途奔波大醫院排隊複診的辛苦。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule & Contact Section -->
+        <section id="schedule" class="section" style="border-bottom: none;">
+            <div class="section-header">
+                <h3 class="section-title">門診時間與交通聯絡</h3>
+                <div class="section-desc">歡迎預約諮詢，雙主治團隊竭誠為您服務</div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-cell-left">
+                    <table class="table-schedule">
+                        <thead>
+                            <tr>
+                                <th>門診時段</th>
+                                <th>一</th>
+                                <th>二</th>
+                                <th>三</th>
+                                <th>四</th>
+                                <th>五</th>
+                                <th>六</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>早診</strong><br><span
+                                        style="font-size:0.8rem; color:#555;">08:30-11:30</span></td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>●</td>
+                            </tr>
+                            <tr>
+                                <td><strong>午診</strong><br><span
+                                        style="font-size:0.8rem; color:#555;">14:00-17:00</span></td>
+                                <td>●</td>
+                                <td>休</td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>休</td>
+                            </tr>
+                            <tr>
+                                <td><strong>晚診</strong><br><span
+                                        style="font-size:0.8rem; color:#555;">18:00-20:30</span></td>
+                                <td>●</td>
+                                <td>●</td>
+                                <td>休</td>
+                                <td>●</td>
+                                <td>休</td>
+                                <td>休</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.85rem; color: #444; margin-top: 0.8rem; font-weight: 500;">
+                        ※ 2026/9/1 起試營運。週日及國定假日休診。各醫師詳細排班請參考當月門診表。如遇緊急外傷狀況，請先電話聯繫。
+                    </p>
+                </div>
+
+                <div class="info-cell-right" id="contact">
+                    <div class="contact-title">診所資訊</div>
+                    <div class="contact-item"><span class="contact-label">診所名稱：</span>翔宇診所</div>
+                    <div class="contact-item"><span class="contact-label">醫療團隊：</span>黃曉翔 院長 / 蘇承翔 副院長</div>
+                    <div class="contact-item"><span class="contact-label">諮詢專線：</span>(0X) XXXX-XXXX</div>
+                    <div class="contact-item"><span class="contact-label">診所地址：</span>在地服務地址（備有專屬停車空間）</div>
+                    <div class="contact-item"><span class="contact-label">交通指引：</span>搭乘社區巴士至「〇〇站」下車，步行 2 分鐘即可抵達。</div>
+
+                    <a href="tel:00000000" class="booking-btn">電話直接預約看診</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="copyright">&copy; 2026 翔宇診所 Xiang-Yu Clinic. All Rights Reserved.</p>
+        <p>本網站提供之醫療資訊僅供參考，實際診療及處置需由醫師親自評估。</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        function toggleAccordion(headerElement) {
+            const item = headerElement.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
